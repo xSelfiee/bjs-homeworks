@@ -1,46 +1,29 @@
+"use strict";
 function getResult(a,b,c){
-    "use strict";
-    let argA = a;
-    let argB = b;
-    let argC = c;
-    let D = (Math.pow(argB, 2) - (4 * argA * argC));
+    let D = (Math.pow(b, 2) - (4 * a * c));
     let arr = [];
-    if (D < 0)
-        return arr;
     if (D === 0)
-        arr.push((-argB + Math.sqrt(D)) / (2 * argA));
+        arr.push((-b + Math.sqrt(D)) / (2 * a));
     else if (D > 0){
-        arr.push((-argB + Math.sqrt(D)) / (2 * argA));
-        arr.push((-argB - Math.sqrt(D)) / (2 * argA));
+        arr.push((-b + Math.sqrt(D)) / (2 * a));
+        arr.push((-b - Math.sqrt(D)) / (2 * a));
     }
     return arr;
 }
 
 function getAverageMark(marks){
-    let arr = Array.from(marks);
-    let averageMark = 0;
-    arrLength = arr.length;
     let sum = 0;
-    if (arrLength === 0)
-        return averageMark
-    if (arrLength < 6){
-        for (let i = 0; i < arrLength; i++) {
-            sum += Number(arr[i]);
-        }
-        averageMark = sum / arrLength;
+    let maxMark = 5;
+    if (marks.length === 0)
+        return 0;
+    if (marks.length <= maxMark)
+        maxMark = marks.length;
+    for (let i = 0; i < maxMark; i++) {
+        sum += Number(marks[i]);
     }
-    else if (arrLength > 5){
-        for (let i = 0; i < 5; i++) {
-            sum += Number(arr[i]);
-        }
-        averageMark = sum / 5;
-    }
-    return averageMark;
+    return sum / maxMark;
 }
 
 function askDrink(name,dateOfBirthday){
-    let now = new Date();
-    let age = now.getFullYear() - dateOfBirthday.getFullYear();
-    let result = (age > 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
-    return result;
+    return ((new Date().getFullYear() - dateOfBirthday.getFullYear()) > 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
 }
