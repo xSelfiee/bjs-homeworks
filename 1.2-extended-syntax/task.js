@@ -13,17 +13,18 @@ function getResult(a,b,c){
 
 function getAverageMark(marks){
     let sum = 0;
-    let maxMark = 5;
+    const maxMark = 5;
     if (marks.length === 0)
         return 0;
-    if (marks.length <= maxMark)
-        maxMark = marks.length;
-    for (let i = 0; i < maxMark; i++) {
+    marks.splice(maxMark);
+    for (let i = 0; i < marks.length; i++) {
         sum += Number(marks[i]);
     }
-    return sum / maxMark;
+    return sum / marks.length;
 }
 
 function askDrink(name,dateOfBirthday){
-    return ((new Date().getFullYear() - dateOfBirthday.getFullYear()) > 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
+    return ((new Date().getFullYear() - dateOfBirthday.getFullYear()) > 18)
+        ? `Не желаете ли олд-фэшн, ${name}?`
+        : `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
 }
