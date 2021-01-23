@@ -1,7 +1,7 @@
 function parseCount(num) {
     const newNum = Number.parseInt(num);
     if (isNaN(newNum)) {
-        throw new Error("Невалидное значение");;
+        throw new Error("Невалидное значение");
     }
     return newNum;
 }
@@ -20,7 +20,7 @@ class Triangle {
         this.b = b;
         this.c = c;
         if ((this.a + this.b) <= this.c || (this.a + this.c) <= this.b || (this.b + this.c) <= this.a)
-        throw new Error("Треугольник с такими сторонами не существует")
+        throw new Error("Треугольник с такими сторонами не существует");
     }
     getPerimeter() {
         return this.a + this.b + this.c;
