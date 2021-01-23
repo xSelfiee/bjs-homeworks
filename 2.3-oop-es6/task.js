@@ -133,6 +133,10 @@ class StudentLog {
         this.academicSubject[subject] = [];    
         if ([1, 2, 3, 4, 5].indexOf(grade) != -1)   //if ((grade === 1) || (grade === 2) || (grade === 3) || (grade === 4) || (grade === 5))                  
         this.academicSubject[subject].push(grade);
+        if (this.academicSubject[subject].length === 0){
+            delete this.academicSubject[subject];
+            return 0;
+        }
         return this.academicSubject[subject].length;
     }
     getAverageBySubject(subject) {
@@ -160,4 +164,6 @@ console.log(log.getAverageBySubject('algebra'));
 log.addGrade(5, 'geometry');
 log.addGrade(5, 'geometry');
 log.addGrade(5, 'geometry');
+console.log(log.addGrade(0, 'chemistry'));
+console.log(log.academicSubject);
 console.log(log.getTotalAverage());
